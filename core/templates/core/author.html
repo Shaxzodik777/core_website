@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ request.user }}
+{% endblock %}
+
+{% block content %}
+<ul class="list-group list-group-flush">
+    <li class="list-group-item list-group-item-action">
+        Имя автора: <b>{{ request.user.username | title }}</b>
+    </li>
+    <li class="list-group-item list-group-item-action">
+        Почта:
+        {% if request.user.email %}
+        <b>{{ request.user.email }}</b>
+        {% else %}
+        -
+        {% endif %}
+    </li>
+    <li class="list-group-item list-group-item-action">
+        Все статьи: <b>{{ total_articles }}</b>
+    </li>
+    <li class="list-group-item list-group-item-action">
+        Все отзывы: <b>{{ total_comments }}</b>
+    </li>
+    <li class="list-group-item list-group-item-action">
+        Все лайки: <b>{{ total_likes }}</b>
+    </li>
+    <li class="list-group-item list-group-item-action">
+        Все дизлайки: <b>{{ total_dislikes }}</b>
+    </li>
+</ul>
+
+<div class="row row-gap-4">
+
+    {% for article in articles %}
+    <div class="col-12 col-md-6 article-item">
+        {% include 'components/_article-card.html' %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

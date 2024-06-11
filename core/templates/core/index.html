@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+<!--_-->
+
+{% block title %}
+Главная страница
+{% endblock %}
+
+
+{% block content %}
+<h1 class="text-center">{{ category }}</h1>
+<div class="d-flex justify-content-end column-gap-2 mb-3">
+    <button class="btn btn-outline-dark" id="grid_3"><i class="bi bi-grid-3x2-gap-fill"></i></button>
+    <button class="btn btn-outline-dark" id="grid_1"><i class="bi bi-list"></i></button>
+</div>
+<div class="row row-gap-4">
+
+    {% for article in articles %}
+    <div class="col-12 col-md-6 article-item">
+        {% include 'components/_article-card.html' %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
