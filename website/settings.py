@@ -26,11 +26,14 @@ SECRET_KEY = 'django-insecure-l%aku(dt0o2r6g!=(bbt)7nqopf3rt_f852^=5e-8+ag61*$2#
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    '127.0.0.1',
     'shaxzodik.pythonanywhere.com'
+
 ]
 
 
 # Application definition
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -39,8 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'drf_spectacular',
 
-    'core.apps.CoreConfig'
+    'core.apps.CoreConfig',
+    'api.apps.ApiConfig'
 
 ]
 
@@ -134,3 +140,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+        'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema'
+}
